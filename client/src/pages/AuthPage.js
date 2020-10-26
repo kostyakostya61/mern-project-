@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import { useHttp } from '../hooks/http.hook'
 import { useMessage } from '../hooks/message.hook'
 import {AuthContext} from "../context/AuthContext"
 
 
 export const AuthPage = () => {
-    // const auth = useContext(AuthContext)
+    const auth = useContext(AuthContext)
     const message = useMessage ()
     const  {loading, request,clearError,error} = useHttp()
       const [form,setForm] =useState ({
@@ -17,6 +17,7 @@ export const AuthPage = () => {
             clearError()
       }, [error, message,clearError ])
 
+      
 
       const changeHandler = event =>{
           setForm({ ...form,[event.target.name]: event.target.value })
@@ -31,7 +32,7 @@ export const AuthPage = () => {
       const loginHandler = async() => {
             try {
                 const data = await request ('/api/auth/login', 'POST', {...form})
-                // auth.login(data.token, data.userId)
+                 auth.login (data.token, data.userId )
             } catch (e) {}
       }
 
@@ -59,7 +60,7 @@ export const AuthPage = () => {
                     
                     />
 
-                              < label htmlFor="email">Email</label>
+                              < label className="active" htmlFor="email">Email</label>
                          </div> 
 
 
@@ -78,7 +79,7 @@ export const AuthPage = () => {
                         
 
                     
-                              < label htmlFor="email">Пароль</label>
+                              < label className="active" htmlFor="email">Пароль</label>
                          </div>            
         
         
