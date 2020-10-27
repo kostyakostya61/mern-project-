@@ -20,8 +20,8 @@ export const Navbar = () => {
         <div class="nav-wrapper blue darken-3">
           <a href="/" class="brand-logo">iKostya</a>
           <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><NavLink to="/create">Ссылки</NavLink></li>
-            <li><NavLink to="/links">Добавить</NavLink></li>
+            <li><NavLink to="/create">Добавить</NavLink></li>
+            <li><NavLink to="/links">Ссылки</NavLink></li>
             <li><a href="/" onClick={logoutHandler}>Выйти</a></li>
           </ul>
         </div>
