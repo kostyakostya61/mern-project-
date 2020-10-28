@@ -1,5 +1,6 @@
 {
     "port": 5000,
     "jwtSecret": "kvoronin mern",
-    "mongoUri": "mongodb+srv://kvoronin:53677232kostya@cluster0.imq2m.mongodb.net/app?retryWrites=true&w=majority"
+    "mongoUri": "mongodb+srv://kvoronin:53677232kostya@cluster0.imq2m.mongodb.net/app?retryWrites=true&w=majority",
+    "baseUrl": "http://localhost:5000"
 }
