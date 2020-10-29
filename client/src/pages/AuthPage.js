@@ -10,6 +10,7 @@ export const AuthPage = () => {
   const [form, setForm] = useState({
     email: '',
     password: '',
+    nickname: '',
   });
 
   useEffect(() => {
@@ -48,13 +49,14 @@ export const AuthPage = () => {
                   placeholder="Введите имя"
                   id="name"
                   type="text"
-                  name="name"
+                  name="nickname"
                   className="yellow-input"
-                  
+                  onChange={changeHandler}
+                  disabled={loading}
                 />
 
                 <label className="active" htmlFor="email">
-                  Name
+                  Nickname
                 </label>
               </div>
 

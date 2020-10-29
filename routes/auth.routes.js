@@ -25,7 +25,7 @@ router.post(
         });
       }
 
-      const { email, password, name } = req.body; //получение  данных с фронта
+      const { email, password, nickname } = req.body; //получение  данных с фронта
 
       const candidate = await User.findOne({ email });
 
@@ -36,7 +36,7 @@ router.post(
       }
 
       const hashedPassword = await bcrypt.hash(password, 12);
-      const user = new User({ email, password: hashedPassword, name });
+      const user = new User({ email, password: hashedPassword, nickname });
 
       await user.save();
 
@@ -94,8 +94,48 @@ router.post(
         .json({ message: 'Что-то пошло не так,попробуйте снова...' });
     }
   }
-
-  // api/auth/login
 );
+// api/auth/nickname
+router.get('/nickname', async (req, res) => {
+  try {
+    const { userId } = req.query;
+    const user = await User.findById(userId);
+
+    if (user) {
+      return res.status(201).json(user);
+    }
+    await user.save();
+  } catch (e) {
+    res.status(500).json({ message: 'незнакомец' });
+  }
+});
+
+// api/auth/count
+
+router.get('/count', async (req,res) => {
+  try {
+    const countof = await User.find();
+
+       res.status(201).json(countof);
+    
+  } catch (e) {
+    res.status(500).json({ message: 'Возникла ошибка,попробуйте снова' });
+  }
+});
+
+// api/auth/count
+router.delete('/delete', async (req,res) => {
+  try {
+
+    const deleter = await User.findById(userId);
+
+      
+       
+    
+  } catch (e) {
+    res.status(500).json({ message: 'Возникла ошибка,попробуйте снова' });
+  }
+});
+
 
 module.exports = router;
